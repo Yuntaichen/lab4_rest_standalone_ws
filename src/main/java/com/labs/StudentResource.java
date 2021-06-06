@@ -10,8 +10,8 @@ import javax.ws.rs.core.MediaType;
 
 public class StudentResource {
     @GET
-    public LinkedHashSet<Student> getStudents(@QueryParam("name") String name) {
-        LinkedHashSet<Student> students = new PostgreSQLDAO().getStudentsByFields(name);
-        return students;
+    public LinkedHashSet<Student> getStudents(@QueryParam("searchParams") final List<String> searchArgs) {
+        System.out.println(searchArgs);
+        return new PostgreSQLDAO().getStudentsByFields(searchArgs);
     }
 }
